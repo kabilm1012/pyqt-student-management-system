@@ -22,7 +22,7 @@ class MainWindow(QMainWindow):
         file_menu_item.addAction(add_student_action)
 
         about_action = QAction("About", self)
-        add_student_action.triggered.connect(self.about)
+        about_action.triggered.connect(self.about)
         help_menu_item.addAction(about_action)
 
         search_student_action = QAction(QIcon("icons/search.png"), "Search", self)
@@ -275,6 +275,17 @@ class DeleteDialog(QDialog):
 
     def no(self):
         self.close()
+
+
+class AboutDialog(QMessageBox):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("About")
+        content = """
+This is a simple student management system app where we can edit, 
+add and delete the student database. Feel free to modify and use!
+"""
+        self.setText(content)
 
 
 app = QApplication(sys.argv)
